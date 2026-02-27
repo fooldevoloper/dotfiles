@@ -1,0 +1,40 @@
+return {
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		opts = {
+			ensure_installed = {
+				"javascript",
+				"typescript",
+				"css",
+				"gitignore",
+				"graphql",
+				"http",
+				"json",
+				"scss",
+				"sql",
+				"vim",
+				"lua",
+				"ember",
+				"tsx",
+				"html",
+				"yaml",
+				"markdown",
+				"markdown_inline",
+			},
+			sync_install = false,
+			auto_install = true,
+			highlight = { enable = true },
+			indent = { enable = true },
+			incremental_selection = {
+				enable = true,
+				keymaps = {
+					init_selection = "<C-space>",
+					node_incremental = "<C-space>",
+					scope_incremental = "<C-s>",
+					node_decremental = "<C-backspace>",
+				},
+			},
+		},
+	},
+}
