@@ -1,0 +1,137 @@
+
+start-at-login = true
+enable-normalization-flatten-containers = true 
+enable-normalization-opposite-orientation-for-nested-containers = true 
+# Start AeroSpace at login
+
+default-root-container-layout = 'tiles'
+after-startup-command = [
+    'exec-and-forget fswatch -o ~/.config/aerospace/aerospace.toml | xargs -n1 -I{} sh -c "aerospace reload-config"'
+]
+
+# Notify Sketchybar about workspace change
+#exec-on-workspace-change = [
+#  '/bin/bash',
+#  '-c',
+#  "osascript -e \"display notification \\\"cmd:$AEROSPACE_FOCUSED_WORKSPACE\\\" with title \\\"Switch to workspace\\\"\""
+#]
+
+[gaps]
+inner.horizontal = 0
+inner.vertical = 0
+outer.left = 0
+outer.bottom = 0
+outer.top = 0
+outer.right = 0
+
+[key-mapping]
+preset = 'qwerty'
+
+[mode.main.binding]
+
+cmd-enter = '''exec-and-forget open -a Kitty'''
+#alt-v = 'layout tiles horizontal vertical'
+cmd-shift-f = 'fullscreen' 
+#alt-s = 'layout tiles accordion'
+#alt-e = 'layout tiles'
+#alt-comma = 'layout accordion horizontal vertical'
+#alt-g = "exec-and-forget open -a 'Google Chrome' 'https://gemini.google.com'"
+# Open Gemini on Workspace G
+#alt-g = ['workspace e', "exec-and-forget /Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --profile-directory='Default' --app='https://gemini.google.com'"]
+#alt-g = ['workspace e', "exec-and-forget /Applications/Brave\\ Browser.app/Contents/MacOS/Brave\\ Browser --profile-directory='Default' --app='https://gemini.google.com'"]
+#alt-m = ['workspace b', "exec-and-forget /Applications/Brave\\ Browser.app/Contents/MacOS/Brave\\ Browser --profile-directory='Default' --app='https://meet.google.com/dtp-eftc-xfh'"]
+#alt-c = ['workspace e', "exec-and-forget /Applications/Brave\\ Browser.app/Contents/MacOS/Brave\\ Browser --profile-directory='Profile 1' --app='https://chatgpt.com'"]
+
+# Open ChatGPT on Workspace C
+#alt-c = ['workspace e', "exec-and-forget /Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --profile-directory='Profile 1' --app='https://chatgpt.com'"]# See: https://nikitabobko.github.io/AeroSpace/commands#focus
+cmd-h = 'focus left'
+cmd-j = 'focus down'
+cmd-k = 'focus up'
+cmd-l = 'focus right'
+
+cmd-shift-h = 'move left'
+cmd-shift-j = 'move down'
+cmd-shift-k = 'move up'
+cmd-shift-l = 'move right'
+
+#alt-minus = 'resize smart -50'
+#alt-equal = 'resize smart +50'
+# See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
+# See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
+# See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
+#alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+#alt-shift-semicolon = 'mode service'
+
+cmd-e = 'workspace e'
+cmd-b = 'workspace b'
+cmd-1 = 'workspace 1'
+cmd-2 = 'workspace 2'
+cmd-5 = 'workspace 5'
+cmd-6 = 'workspace 6'
+cmd-7 = 'workspace 7'
+cmd-8 = 'workspace 8'
+cmd-9 = 'workspace 9'
+cmd-0 = 'workspace 0'
+# Changed to ctrl-shift for moving windows between workspaces
+cmd-shift-e = 'move-node-to-workspace e'
+cmd-shift-b = 'move-node-to-workspace b'
+cmd-shift-1 = 'move-node-to-workspace 1'
+cmd-shift-2 = 'move-node-to-workspace 2'
+cmd-shift-5 = 'move-node-to-workspace 5'
+cmd-shift-6 = 'move-node-to-workspace 6'
+cmd-shift-7 = 'move-node-to-workspace 7'
+cmd-shift-8 = 'move-node-to-workspace 8'
+cmd-shift-9 = 'move-node-to-workspace 9'
+cmd-shift-0 = 'move-node-to-workspace 0'
+
+alt-shift-r = [
+    'reload-config', 
+]
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Terminal'
+run = 'move-node-to-workspace 1'
+
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Safari'
+run = 'move-node-to-workspace 2'
+
+
+[[on-window-detected]]
+if.app-id = 'com.electron.dockerdesktop'
+run = 'move-node-to-workspace 2'
+
+
+[[on-window-detected]]
+if.app-id = 'com.apple.mail'
+run = 'move-node-to-workspace 0'
+
+
+[[on-window-detected]]
+if.app-id = 'net.kovidgoyal.kitty'
+run = 'move-node-to-workspace 1'
+
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+run = 'move-node-to-workspace e'
+
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = 'move-node-to-workspace b'
+
+
+[[on-window-detected]]
+if.app-id = 'com.apple.mail'
+run = 'move-node-to-workspace 2'
+
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Preview'
+run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = 'move-node-to-workspace 2'
