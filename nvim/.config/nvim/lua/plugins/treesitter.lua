@@ -15,7 +15,7 @@ return {
 				"sql",
 				"vim",
 				"lua",
-				"ember",
+				"glimmer",
 				"tsx",
 				"html",
 				"yaml",
