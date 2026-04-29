@@ -34,14 +34,6 @@ keymap.set("n", "sh", "<C-w>h")
 keymap.set("n", "sk", "<C-w>k")
 keymap.set("n", "sj", "<C-w>j")
 keymap.set("n", "sl", "<C-w>l")
--- Terminal navigation
--- This lets you move from terminal to other windows without hitting Ctrl-\ Ctrl-n first
-keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]], opts)
-keymap.set("t", "<C-j>", [[<C-\><C-n><C-w>j]], opts)
-keymap.set("t", "<C-k>", [[<C-\><C-n><C-w>k]], opts)
-keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]], opts)
-keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
--- Resize window
 -- Resize window
 keymap.set("n", "<C-S-h>", "<C-w><")
 keymap.set("n", "<C-S-l>", "<C-w>>")

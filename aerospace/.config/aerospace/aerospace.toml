@@ -1,12 +1,12 @@
 
 start-at-login = true
-enable-normalization-flatten-containers = true 
-enable-normalization-opposite-orientation-for-nested-containers = true 
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
 # Start AeroSpace at login
 
 default-root-container-layout = 'tiles'
 after-startup-command = [
-    'exec-and-forget fswatch -o ~/.config/aerospace/aerospace.toml | xargs -n1 -I{} sh -c "aerospace reload-config"'
+  'exec-and-forget fswatch -o ~/.config/aerospace/aerospace.toml | xargs -n1 -I{} sh -c "aerospace reload-config"',
 ]
 
 # Notify Sketchybar about workspace change
@@ -31,7 +31,7 @@ preset = 'qwerty'
 
 cmd-enter = '''exec-and-forget open -a Kitty'''
 #alt-v = 'layout tiles horizontal vertical'
-cmd-shift-f = 'fullscreen' 
+cmd-shift-f = 'fullscreen'
 #alt-s = 'layout tiles accordion'
 #alt-e = 'layout tiles'
 #alt-comma = 'layout accordion horizontal vertical'
@@ -84,12 +84,15 @@ cmd-shift-8 = 'move-node-to-workspace 8'
 cmd-shift-9 = 'move-node-to-workspace 9'
 cmd-shift-0 = 'move-node-to-workspace 0'
 
-alt-shift-r = [
-    'reload-config', 
-]
+alt-shift-r = ['reload-config']
+
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Terminal'
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+if.app-id = 'org.yanex.marta'
 run = 'move-node-to-workspace 1'
 
 

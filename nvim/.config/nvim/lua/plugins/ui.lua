@@ -115,46 +115,6 @@ return {
 			})
 		end,
 	},
-	-- LazyGit integration with Telescope
-	{
-		"kdheepak/lazygit.nvim",
-		keys = {
-			{
-				";c",
-				":LazyGit<Return>",
-				silent = true,
-				noremap = true,
-			},
-		},
-		-- optional for floating window border decoration
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-	},
-	{
-		"kristijanhusak/vim-dadbod-ui",
-		dependencies = {
-			{ "tpope/vim-dadbod", lazy = true },
-			{ "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
-		},
-		cmd = {
-			"DBUI",
-			"DBUIToggle",
-			"DBUIAddConnection",
-			"DBUIFindBuffer",
-		},
-		init = function()
-			-- Your DBUI configuration
-			vim.g.db_ui_use_nerd_fonts = 1
-		end,
-		keys = {
-			{
-
-				"<leader>d",
-				"<cmd>NvimTreeClose<cr><cmd>tabnew<cr><bar><bar><cmd>DBUI<cr>",
-			},
-		},
-	},
 	{
 		"nvim-tree/nvim-tree.lua",
 		config = function()
@@ -194,13 +154,8 @@ return {
 					group_empty = true,
 				},
 				filters = {
-					dotfiles = true,
-					custom = {
-						"node_modules/.*", -- Already there
-						"build/.*", -- Excludes the build folder and everything in it
-						"dist/.*", -- Common for compiled files
-						"%.js$", -- Excludes all .js files (using Lua pattern for 'ends with .js')
-					},
+					dotfiles = false,
+					custom = {},
 				},
 				log = {
 					enable = true,

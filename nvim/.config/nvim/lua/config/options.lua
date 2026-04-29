@@ -25,7 +25,6 @@ vim.opt.wrap = false
 vim.opt.backspace = { "start", "eol", "indent" }
 vim.opt.path:append({ "**" })
 vim.opt.wildignore:append({ "*/node_modules/*", "*/build/*", "*/dist/*" })
-vim.opt.wildignore:append({ "*.js" }) -- Only if you are strictly using TypeScript
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.splitkeep = "cursor"
