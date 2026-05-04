@@ -39,3 +39,9 @@ vim.opt.cursorline = true
 vim.opt.wrap = false
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "json", "jsonc" },
+  callback = function()
+    vim.b.autoformat = false
+  end,
+})
