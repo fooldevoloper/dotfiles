@@ -3,8 +3,7 @@ if vim.loader then
 end
 
 _G.dd = function(...)
-	require("util.debug").dump(...)
+	vim.print(...)
 end
-vim.print = _G.dd
 
 require("config.lazy")
