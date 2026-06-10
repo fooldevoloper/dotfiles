@@ -1,44 +1,56 @@
 return {
-	-- 1. Tools (Mason)
+	-- 1. Tools (Mason) - Fixed the repository name
 	{
-		"mason-org/mason.nvim",
+		"williamboman/mason.nvim",
 		opts = function(_, opts)
-			vim.list_extend(opts.ensure_installed, {
-				"luacheck",
-				"shellcheck",
-				"vtsls",
-				"css-lsp",
-			})
+			vim.list_extend(opts.ensure_installed, {})
 		end,
 	},
+
 	-- 2. LSP Servers Configuration
 	{
 		"neovim/nvim-lspconfig",
 		opts = {
-			inlay_hints = { enabled = true },
-			servers = {
-				eslint = {
-					enabled = false, -- This completely stops LazyVim from starting ESLint
-				},
-				tsserver = { enabled = false },
+			-- MASTER SWITCHES
+			autoformat = false, -- Disables all autoformatting
+			inlay_hints = { enabled = true }, -- Shows types inline
 
+			servers = {
+				-- 1. VTSLS (Modern TypeScript Server)
 				vtsls = {
 					settings = {
 						typescript = {
-							inlayHints = {
-								includeInlayParameterNameHints = "literal",
-								includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-								includeInlayFunctionParameterTypeHints = true,
-								includeInlayVariableTypeHints = false,
-								includeInlayPropertyDeclarationTypeHints = true,
-								includeInlayFunctionLikeReturnTypeHints = true,
-								includeInlayEnumMemberValueHints = true,
-							},
+							-- This hides "smaller issues" like unused variables
+							reportStyleChecksAsWarnings = false,
+						},
+						javascript = {
+							reportStyleChecksAsWarnings = false,
 						},
 					},
+					-- This specific block kills the red/yellow underlines (Diagnostics)
+					handlers = {
+						["textDocument/publishDiagnostics"] = function() end,
+					},
 				},
-				html = {},
-				lua_ls = {},
+
+				-- 2. HTML
+				html = {
+					formatting = false,
+					handlers = {
+						["textDocument/publishDiagnostics"] = function() end,
+					},
+				},
+
+				-- 3. Lua (for your config files)
+				lua_ls = {
+					formatting = false,
+					handlers = {
+						["textDocument/publishDiagnostics"] = function() end,
+					},
+				},
+
+				-- 4. ESLINT (Explicitly disabled as requested)
+				eslint = { enabled = false },
 			},
 		},
 	},

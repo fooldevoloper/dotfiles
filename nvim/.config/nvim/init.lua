@@ -5,5 +5,5 @@ end
 _G.dd = function(...)
 	vim.print(...)
 end
-
+vim.g.autoformat = false
 require("config.lazy")

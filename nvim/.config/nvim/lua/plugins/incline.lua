@@ -1,7 +1,7 @@
 return {
 	"b0o/incline.nvim",
 	dependencies = {},
-	enabled = false, -- Currently disabled per your config
+	enabled = true, -- Currently disabled per your config
 	event = "BufReadPre",
 	priority = 1200,
 	config = function()
