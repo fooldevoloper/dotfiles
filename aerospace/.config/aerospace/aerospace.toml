@@ -1,7 +1,6 @@
 start-at-login = true
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
-
 default-root-container-layout = 'tiles'
 
 after-startup-command = [
@@ -9,33 +8,32 @@ after-startup-command = [
 ]
 
 [gaps]
-inner.horizontal = 0
-inner.vertical = 0
-outer.left = 0
-outer.bottom = 0
-outer.top = 0
-outer.right = 0
+inner.horizontal = 10
+inner.vertical = 10
+outer.left = 120
+outer.bottom = 40
+outer.top = 40
+outer.right = 120
 
 [key-mapping]
 preset = 'qwerty'
 
 [mode.main.binding]
-
 # ============================================================
 # APP -> WORKSPACE (press key = switch + launch/focus, one shot)
 # ============================================================
 cmd-1 = ['workspace 1', 'exec-and-forget open -a Kitty']
 cmd-2 = ['workspace 2', 'exec-and-forget open -a Firefox']
-cmd-3 = ['workspace c', 'exec-and-forget open -a Codex']
-cmd-4 = ['workspace g', 'exec-and-forget firefoxpwa site launch 01M11FKBP3PBC9GYXMGQ7DAHT9']
+cmd-3 = ['workspace 3', 'exec-and-forget open -a Codex']
+cmd-4 = ['workspace 4', 'exec-and-forget firefoxpwa site launch 01M11FKBP3PBC9GYXMGQ7DAHT9']
 cmd-7 = ['workspace 7', 'exec-and-forget open -a WhatsApp']
 cmd-8 = ['workspace 8', 'exec-and-forget open -a Mail']
-cmd-5 = ['workspace 5', 'exec-and-forget open -a Preview']
+cmd-5 = ['workspace 5', 'exec-and-forget open -a Claude']
 cmd-6 = ['workspace 6', 'exec-and-forget open -a Finder']
 cmd-9 = ['workspace 9', 'exec-and-forget open -a "Docker Desktop"']
-
 cmd-e = ['workspace e', 'exec-and-forget open -a "Antigravity IDE"']
 cmd-b = ['workspace b', 'exec-and-forget open -a "Google Chrome"']
+cmd-0 = ['workspace 0', ]
 
 # Quick terminal in current workspace, no switch
 cmd-enter = 'exec-and-forget open -a Kitty'
@@ -44,12 +42,10 @@ cmd-enter = 'exec-and-forget open -a Kitty'
 # WINDOW MANAGEMENT
 # ============================================================
 cmd-shift-f = 'fullscreen'
-
 cmd-h = 'focus left'
 cmd-j = 'focus down'
 cmd-k = 'focus up'
 cmd-l = 'focus right'
-
 cmd-shift-h = 'move left'
 cmd-shift-j = 'move down'
 cmd-shift-k = 'move up'
@@ -66,8 +62,8 @@ alt-shift-r = ['reload-config']
 # ============================================================
 cmd-shift-e = 'move-node-to-workspace e'
 cmd-shift-b = 'move-node-to-workspace b'
-cmd-shift-c = 'move-node-to-workspace c'
-cmd-shift-g = 'move-node-to-workspace g'
+cmd-shift-3 = 'move-node-to-workspace 3'
+cmd-shift-4 = 'move-node-to-workspace 4'
 cmd-shift-1 = 'move-node-to-workspace 1'
 cmd-shift-2 = 'move-node-to-workspace 2'
 cmd-shift-5 = 'move-node-to-workspace 5'
@@ -76,3 +72,62 @@ cmd-shift-7 = 'move-node-to-workspace 7'
 cmd-shift-8 = 'move-node-to-workspace 8'
 cmd-shift-9 = 'move-node-to-workspace 9'
 cmd-shift-0 = 'move-node-to-workspace 0'
+
+# ============================================================
+# ON WINDOW DETECTED — auto-assign to workspace + force tiling
+# ============================================================
+[[on-window-detected]]
+if.app-id = 'net.kovidgoyal.kitty'
+run = ['move-node-to-workspace 1', 'layout tiles']
+
+[[on-window-detected]]
+if.app-id = 'org.mozilla.firefox'
+run = ['move-node-to-workspace 2', 'layout tiles']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Codex'
+run = ['move-node-to-workspace 3', 'layout tiles']
+
+[[on-window-detected]]
+if.app-id = 'si.filips.firefoxpwa.runtime'
+run = ['move-node-to-workspace 4', 'layout tiles']
+
+[[on-window-detected]]
+if.app-id = 'net.whatsapp.WhatsApp'
+run = ['move-node-to-workspace 7', 'layout tiles']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.mail'
+run = ['move-node-to-workspace 8', 'layout tiles']
+
+
+
+[[on-window-detected]]
+if.app-id = 'com.anthropic.claudefordesktop'
+run = ['move-node-to-workspace 5', 'layout tiles']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.Preview'
+run = ['move-node-to-workspace 5', 'layout tiles']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.finder'
+run = ['move-node-to-workspace 6', 'layout tiles']
+
+[[on-window-detected]]
+if.app-id = 'com.docker.docker'
+run = ['move-node-to-workspace 9', 'layout tiles']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Antigravity'
+run = ['move-node-to-workspace e', 'layout tiles']
+
+[[on-window-detected]]
+if.app-id = 'com.google.Chrome'
+run = ['move-node-to-workspace b', 'layout tiles']
+
+# Catch-all: never let ANY window float — forces every window
+# into the tiling tree so it always takes its full split, i3-style.
+[[on-window-detected]]
+if.during-aerospace-startup = false
+run = 'layout tiles'
