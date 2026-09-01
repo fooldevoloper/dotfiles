@@ -1,9 +1,2 @@
-if vim.loader then
-	vim.loader.enable()
-end
-
-_G.dd = function(...)
-	vim.print(...)
-end
-vim.g.autoformat = false
+-- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
