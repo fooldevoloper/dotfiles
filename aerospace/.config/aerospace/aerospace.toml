@@ -1,8 +1,8 @@
+config-version = 2
 start-at-login = true
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 default-root-container-layout = 'tiles'
-
 after-startup-command = [
   'exec-and-forget fswatch -o ~/.config/aerospace/aerospace.toml | xargs -n1 -I{} sh -c "aerospace reload-config"',
 ]
@@ -25,15 +25,15 @@ preset = 'qwerty'
 cmd-1 = ['workspace 1', 'exec-and-forget open -a Kitty']
 cmd-2 = ['workspace 2', 'exec-and-forget open -a Firefox']
 cmd-3 = ['workspace 3', 'exec-and-forget open -a Codex']
-cmd-4 = ['workspace 4', 'exec-and-forget firefoxpwa site launch 01M11FKBP3PBC9GYXMGQ7DAHT9']
 cmd-7 = ['workspace 7', 'exec-and-forget open -a WhatsApp']
 cmd-8 = ['workspace 8', 'exec-and-forget open -a Mail']
-cmd-5 = ['workspace 5', 'exec-and-forget open -a Claude']
+cmd-4 = ['workspace 4', 'exec-and-forget open -a Claude']
 cmd-6 = ['workspace 6', 'exec-and-forget open -a Finder']
 cmd-9 = ['workspace 9', 'exec-and-forget open -a "Docker Desktop"']
 cmd-e = ['workspace e', 'exec-and-forget open -a "Antigravity IDE"']
 cmd-b = ['workspace b', 'exec-and-forget open -a "Google Chrome"']
 cmd-0 = ['workspace 0', ]
+cmd-5 = ['workspace 5', ]
 
 # Quick terminal in current workspace, no switch
 cmd-enter = 'exec-and-forget open -a Kitty'
@@ -41,7 +41,7 @@ cmd-enter = 'exec-and-forget open -a Kitty'
 # ============================================================
 # WINDOW MANAGEMENT
 # ============================================================
-cmd-shift-f = 'fullscreen'
+cmd-shift-f = 'fullscreen --no-outer-gaps'
 cmd-h = 'focus left'
 cmd-j = 'focus down'
 cmd-k = 'focus up'
@@ -85,12 +85,8 @@ if.app-id = 'org.mozilla.firefox'
 run = ['move-node-to-workspace 2', 'layout tiles']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Codex'
+if.app-id = 'com.openai.codex'
 run = ['move-node-to-workspace 3', 'layout tiles']
-
-[[on-window-detected]]
-if.app-id = 'si.filips.firefoxpwa.runtime'
-run = ['move-node-to-workspace 4', 'layout tiles']
 
 [[on-window-detected]]
 if.app-id = 'net.whatsapp.WhatsApp'
@@ -104,7 +100,7 @@ run = ['move-node-to-workspace 8', 'layout tiles']
 
 [[on-window-detected]]
 if.app-id = 'com.anthropic.claudefordesktop'
-run = ['move-node-to-workspace 5', 'layout tiles']
+run = ['move-node-to-workspace 4', 'layout tiles']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.Preview'
@@ -119,7 +115,7 @@ if.app-id = 'com.docker.docker'
 run = ['move-node-to-workspace 9', 'layout tiles']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Antigravity'
+if.app-id= 'com.google.antigravity-ide'
 run = ['move-node-to-workspace e', 'layout tiles']
 
 [[on-window-detected]]
