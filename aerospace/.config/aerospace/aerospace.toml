@@ -56,7 +56,8 @@ cmd-shift-l = 'move right'
 # ============================================================
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 alt-shift-r = ['reload-config']
-cmd-shift-s = 'exec-and-forget screencapture -i -c'
+cmd-shift-s = 'exec-and-forget bash -c "mkdir -p ~/Pictures/Screenshots && screencapture -c -i ~/Pictures/Screenshots/Screenshot_\$(date +%Y-%m-%d_%H-%M-%S).png"'
+
 
 
 # ============================================================
