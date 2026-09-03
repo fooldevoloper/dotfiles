@@ -52,10 +52,12 @@ cmd-shift-k = 'move up'
 cmd-shift-l = 'move right'
 
 # ============================================================
-# WORKSPACE / MONITOR / RELOAD
+# WORKSPACE / MONITOR / RELOAD / SCREENSHOT
 # ============================================================
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 alt-shift-r = ['reload-config']
+cmd-shift-s = 'exec-and-forget screencapture -i -c'
+
 
 # ============================================================
 # MOVE FOCUSED WINDOW TO WORKSPACE (doesn't switch view)
