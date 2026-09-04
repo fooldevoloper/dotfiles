@@ -1,3 +1,5 @@
 tmux/.tmux/plugins/tmux-powerline/
 .DS_Store
 **/.DS_Store
+tmux/scripts/dev-workspace
+
